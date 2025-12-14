@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://u1142715-hub.github.io/solara-meridian-studio/sitemap-index.xml
+
