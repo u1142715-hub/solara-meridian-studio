@@ -4,8 +4,17 @@ const {
   description = "",
 } = Astro.props;
 
+const base = import.meta.env.BASE_URL || "/";
 const pathname = Astro.url?.pathname ?? "/";
-const isActive = (href) => (pathname === href ? "nav__link nav__link--active" : "nav__link");
+
+// Normalize pathname so active link logic works on GitHub Pages project sites (base path)
+const normalizedPathname =
+  base !== "/" && pathname.startsWith(base)
+    ? pathname.slice(base.length - 1) // keep leading slash
+    : pathname;
+
+const isActive = (href) =>
+  (normalizedPathname === href ? "nav__link nav__link--active" : "nav__link");
 
 // Saatchi profile (single external CTA; homepage remains art-first)
 const SAATCHI_PROFILE_URL = "https://www.saatchiart.com/en-au/solara-meridian-studio";
@@ -17,38 +26,27 @@ const SAATCHI_PROFILE_URL = "https://www.saatchiart.com/en-au/solara-meridian-st
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="/styles/global.css" />
+    <link rel="stylesheet" href={`${base}styles/global.css`} />
   </head>
 
   <body>
-    <div class="site-wrapper">
+    <div class="site-shell">
       <header class="site-header">
         <div class="container site-header__inner">
-          <a class="site-logo" href="/" aria-label="Solara Meridian Studio home">
-            <span class="site-logo__mark" aria-hidden="true"></span>
-            Solara Meridian Studio
-          </a>
+          <a class="site-brand" href={base}>SOLARA MERIDIAN STUDIO</a>
 
-          <nav class="nav" aria-label="Primary">
-            <a class={isActive("/art")} href="/art">Art</a>
-            <a class={isActive("/articles")} href="/articles">Articles</a>
-            <a class={isActive("/about")} href="/about">About</a>
-
-            <span class="nav__cta">
-              <a
-                class="btn btn--ghost"
-                href={SAATCHI_PROFILE_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Saatchi Profile
-              </a>
-            </span>
+          <nav class="nav">
+            <a class={isActive("/art")} href={`${base}art`}>Art</a>
+            <a class={isActive("/articles")} href={`${base}articles`}>Articles</a>
+            <a class={isActive("/about")} href={`${base}about`}>About</a>
+            <a class="nav__cta" href={SAATCHI_PROFILE_URL} target="_blank" rel="noopener noreferrer">
+              SAATCHI PROFILE
+            </a>
           </nav>
         </div>
       </header>
 
-      <main>
+      <main class="site-main">
         <slot />
       </main>
 
@@ -56,10 +54,10 @@ const SAATCHI_PROFILE_URL = "https://www.saatchiart.com/en-au/solara-meridian-st
         <div class="container site-footer__inner">
           <div class="site-footer__meta">© {new Date().getFullYear()} Solara Meridian Studio</div>
           <div class="site-footer__links">
-            <a href="/about">About</a>
-            <a href="/articles">Articles</a>
-            <a href="/art">Art</a>
-            <a href="/provenance">Provenance</a>
+            <a href={`${base}about`}>About</a>
+            <a href={`${base}articles`}>Articles</a>
+            <a href={`${base}art`}>Art</a>
+            <a href={`${base}provenance`}>Provenance</a>
           </div>
         </div>
       </footer>
