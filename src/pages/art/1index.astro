@@ -1,0 +1,94 @@
+---
+import LandingLayout from "../../layouts/LandingLayout.astro";
+import ArtworkGrid from "../../components/content/ArtworkGrid.astro";
+import CTASection from "../../components/ui/CTASection.astro";
+import ScrollStorySection from "../../components/layout/ScrollStorySection.astro";
+import { getCollection } from "astro:content";
+
+const artworks = await getCollection("artworks");
+const featured = artworks.filter(a => a.data.isFeatured);
+---
+
+<LandingLayout
+  title="Solara Meridian Studio – Premium Marble Inlay Art"
+  description="Luxury mosaic, marble inlay, and fine-art collections crafted for premium interiors."
+  heroImage="/hero-art.jpg"
+  primaryCtaLabel="View Premium Collections"
+  primaryCtaHref="https://www.saatchiart.com/en-au/solara-meridian-studio"
+>
+
+  <!-- Featured artworks -->
+  <section class="section">
+    <h2 class="h2">Featured Collections</h2>
+    <ArtworkGrid items={featured} />
+  </section>
+
+  <!-- Scroll Story (AI → Mosaic → Finished Art) -->
+  <ScrollStorySection
+    steps={[
+      {
+        title: "From Vision",
+        text: "Each concept begins as a raw spark of color, shape, and emotional tone.",
+        image: "/story/step1.jpg"
+      },
+      {
+        title: "Transformed Through Mosaic",
+        text: "Advanced inlay techniques unify geometric precision with organic flow.",
+        image: "/story/step2.jpg"
+      },
+      {
+        title: "Refined for Premium Interiors",
+        text: "Every final piece is polished, balanced, and made gallery-ready.",
+        image: "/story/step3.jpg"
+      }
+    ]}
+  />
+
+  <!-- Collections List (your named sets) -->
+  <section class="section">
+    <h2 class="h2">Premium Collections</h2>
+    <ul class="collection-list">
+      <li>Marble Inlay Animal</li>
+      <li>Soft Luxe Essence</li>
+      <li>European Quiet Luxury</li>
+      <li>Nordic Nighfall</li>
+      <li>Premium Earth Tones</li>
+      <li>Jewel Tone Royalty</li>
+      <li>Calming Geometry</li>
+      <li>Premium Marble Inlays</li>
+      <li>Boutique Romance</li>
+      <li>Watercolour Cloud Dreams</li>
+      <li>Colour Symphony Triptych Sets</li>
+      <li>Hydration Luxe</li>
+      <li>Spiral Elegance</li>
+      <li>Legacy Collection</li>
+    </ul>
+  </section>
+
+  <!-- CTA: Saatchi -->
+  <CTASection
+    title="Explore Saatchi Art Premium Collections"
+    button="Shop on Saatchi Art"
+    href="https://www.saatchiart.com/en-au/solara-meridian-studio"
+  />
+
+  <!-- CTA: Redbubble -->
+  <CTASection
+    title="Print-on-Demand Collection"
+    button="View Redbubble Store"
+    href="https://www.redbubble.com/people/SamFrederiksen/shop"
+  />
+
+</LandingLayout>
+
+<style>
+  .section { margin: var(--space-5) 0; }
+  .h2 { font-size: var(--font-size-2xl); margin-bottom: var(--space-3); }
+  .collection-list { 
+    list-style: none; 
+    padding: 0; 
+    margin: 0; 
+    display: grid; 
+    gap: var(--space-2); 
+  }
+</style>

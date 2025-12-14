@@ -1,0 +1,81 @@
+---
+import LandingLayout from "../../layouts/LandingLayout.astro";
+import Button from "../../components/ui/Button.astro";
+---
+
+<LandingLayout
+  title="ResetHaven Life Reset System"
+  description="A clear, structured PDF system to reset your routines, energy, habits, and mental clarity."
+  heroImage="/images/resethaven-hero.jpg"
+  primaryCtaLabel="Get the ResetHaven Pack"
+  primaryCtaHref="https://resethaven.gumroad.com/"
+>
+
+  <!-- HERO TEXT -->
+  <h1 class="hero-heading">A Complete System to Reset Your Life</h1>
+  <p class="hero-sub">
+    Simple. Structured. Proven. Everything you need to regain clarity and momentum.
+  </p>
+  <Button href="https://resethaven.gumroad.com/" size="xl">Get the ResetHaven Pack</Button>
+
+  <!-- BENEFITS -->
+  <section class="section">
+    <h2 class="section-title">What’s Inside</h2>
+    <div class="grid-3">
+      <div class="card">
+        <h3>Daily Structure</h3>
+        <p>Clear morning & evening routines with built-in accountability.</p>
+      </div>
+      <div class="card">
+        <h3>Energy Recovery</h3>
+        <p>Simple steps to stabilise sleep, motivation, and cognitive load.</p>
+      </div>
+      <div class="card">
+        <h3>Life Reset Tools</h3>
+        <p>Printable planners, mindset prompts, habit trackers, and more.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PREVIEW SECTION -->
+  <section class="section">
+    <h2 class="section-title">Preview the System</h2>
+    <div class="preview-wrap">
+      <img src="/images/resethaven-preview.jpg" alt="ResetHaven PDF preview" class="preview-img" />
+    </div>
+    <Button href="https://resethaven.gumroad.com/" size="lg">Download the Pack</Button>
+  </section>
+
+  <!-- SOCIAL PROOF -->
+  <section class="section">
+    <h2 class="section-title">Who This Is For</h2>
+    <ul class="who-for">
+      <li>People rebuilding momentum</li>
+      <li>Those feeling overwhelmed or unfocused</li>
+      <li>Anyone wanting a fresh start with structure</li>
+    </ul>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <h2 class="section-title">FAQ</h2>
+    <details>
+      <summary>Is this beginner-friendly?</summary>
+      <p>Yes. ResetHaven is designed to work even if you feel stuck or low-energy.</p>
+    </details>
+    <details>
+      <summary>Do I need to print anything?</summary>
+      <p>No — printable pages are optional. You can use the system digitally.</p>
+    </details>
+    <details>
+      <summary>How fast will I see results?</summary>
+      <p>Most users feel calmer and more organised within the first week.</p>
+    </details>
+  </section>
+
+  <!-- FINAL CTA -->
+  <div class="final-cta">
+    <Button href="https://resethaven.gumroad.com/" size="xl">Start Your Reset</Button>
+  </div>
+
+</LandingLayout>

@@ -1,0 +1,68 @@
+---
+const {
+  title = "Solara Meridian Studio",
+  description = "",
+} = Astro.props;
+
+const pathname = Astro.url?.pathname ?? "/";
+const isActive = (href) => (pathname === href ? "nav__link nav__link--active" : "nav__link");
+
+// Saatchi profile (single external CTA; homepage remains art-first)
+const SAATCHI_PROFILE_URL = "https://www.saatchiart.com/en-au/solara-meridian-studio";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/styles/global.css" />
+  </head>
+
+  <body>
+    <div class="site-wrapper">
+      <header class="site-header">
+        <div class="container site-header__inner">
+          <a class="site-logo" href="/" aria-label="Solara Meridian Studio home">
+            <span class="site-logo__mark" aria-hidden="true"></span>
+            Solara Meridian Studio
+          </a>
+
+          <nav class="nav" aria-label="Primary">
+            <a class={isActive("/art")} href="/art">Art</a>
+            <a class={isActive("/articles")} href="/articles">Articles</a>
+            <a class={isActive("/about")} href="/about">About</a>
+
+            <span class="nav__cta">
+              <a
+                class="btn btn--ghost"
+                href={SAATCHI_PROFILE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Saatchi Profile
+              </a>
+            </span>
+          </nav>
+        </div>
+      </header>
+
+      <main>
+        <slot />
+      </main>
+
+      <footer class="site-footer">
+        <div class="container site-footer__inner">
+          <div class="site-footer__meta">© {new Date().getFullYear()} Solara Meridian Studio</div>
+          <div class="site-footer__links">
+            <a href="/about">About</a>
+            <a href="/articles">Articles</a>
+            <a href="/art">Art</a>
+            <a href="/provenance">Provenance</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

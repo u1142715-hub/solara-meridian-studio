@@ -1,0 +1,197 @@
+---
+import LandingLayout from "../../layouts/LandingLayout.astro";
+import ArtworkGrid from "../../components/content/ArtworkGrid.astro";
+import CTASection from "../../components/ui/CTASection.astro";
+import ScrollStorySection from "../../components/layout/ScrollStorySection.astro";
+import { getCollection } from "astro:content";
+
+const artworks = await getCollection("artworks");
+const featured = artworks.filter((a) => a.data.isFeatured);
+---
+
+<LandingLayout
+  title="Solara Meridian Studio – Premium Marble Inlay Art"
+  description="Luxury mosaic, marble inlay, and fine-art collections crafted for premium interiors."
+>
+  <!-- HERO -->
+  <section class="landing-hero">
+    <div class="landing-hero__copy">
+      <p class="landing-hero__kicker">Solara Meridian Studio</p>
+      <h1 class="landing-hero__title">Gallery-grade marble inlay art for modern interiors.</h1>
+      <p class="landing-hero__text">
+        Curated marble-inlay and jewel-tone collections designed to sit above sofas, consoles,
+        and studio walls with quiet, deliberate confidence.
+      </p>
+      <a
+        class="landing-hero__cta"
+        href="https://www.saatchiart.com/en-au/solara-meridian-studio"
+      >
+        Explore collections on Saatchi Art
+      </a>
+
+      <p class="landing-hero__meta">
+        Payments and delivery are handled directly through Saatchi Art’s secure platform.
+      </p>
+    </div>
+
+    <div class="landing-hero__visual">
+      <img
+        src="/images/hero-gallery-wall.jpg"
+        alt="Solara Meridian Studio marble inlay artwork styled above a sofa in a modern living room"
+      />
+    </div>
+  </section>
+
+  <!-- BENEFITS -->
+  <section class="landing-section">
+    <h2 class="landing-section__title">Why collectors choose this style of work</h2>
+    <div class="landing-benefit-grid">
+      <article class="landing-benefit">
+        <h3>Premium marble-inlay aesthetic</h3>
+        <p>
+          Layered stone, metal, and jewel-inspired palettes give each piece a sense of weight,
+          depth, and quiet luxury.
+        </p>
+      </article>
+      <article class="landing-benefit">
+        <h3>Composed for real rooms</h3>
+        <p>
+          Compositions are tuned to sit cleanly above furniture, working with lighting and negative
+          space instead of fighting it.
+        </p>
+      </article>
+      <article class="landing-benefit">
+        <h3>From bold statements to subtle sets</h3>
+        <p>
+          Build a single focal wall or thread a palette gently through a home or studio using
+          triptychs and paired works.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <!-- SCROLL STORY -->
+  <ScrollStorySection
+    title="From concept to gallery-ready artwork"
+    steps={[
+      {
+        heading: "Vision & palette",
+        text:
+          "Each work starts with a clear color story and emotional tone – marble veins, metals, and jewel accents chosen first.",
+      },
+      {
+        heading: "Structure & composition",
+        text:
+          "Forms are composed so they read clearly from a distance, then reveal more subtle detail and texture as you move closer.",
+      },
+      {
+        heading: "Refinement for interiors",
+        text:
+          "Contrast, scale, and negative space are tuned until the piece sits confidently in real rooms, not just on a screen.",
+      },
+    ]}
+  />
+
+  <!-- FEATURED ARTWORKS -->
+  <section class="landing-section">
+    <div class="landing-panel">
+      <h2 class="landing-section__title">Featured works</h2>
+      <ArtworkGrid artworks={featured} />
+    </div>
+  </section>
+
+  <!-- COLLECTIONS OVERVIEW -->
+  <section class="landing-section">
+    <h2 class="landing-section__title">Collections within Solara Meridian Studio</h2>
+    <p class="landing-section__lead">
+      Each premium collection is developed as a focused body of work, designed to build a coherent
+      visual language across interiors.
+    </p>
+    <ul class="landing-collection-list">
+      <li>The Origin Forms – flagship limited-edition figure series (Saatchi Art)</li>
+      <li>Additional limited collections – currently in development</li>
+    </ul>
+  </section>
+
+  <!-- SOCIAL PROOF / USE CASES -->
+  <section class="landing-section">
+    <h2 class="landing-section__title">Designed for people who curate their atmosphere</h2>
+    <p class="landing-section__lead">
+      Solara Meridian Studio pieces work especially well for collectors, founders, and creatives who
+      want their environment to feel intentional rather than generic.
+    </p>
+    <div class="landing-benefit-grid">
+      <article class="landing-benefit">
+        <h3>Home interiors</h3>
+        <p>
+          Anchor living rooms, bedrooms, and entries with a single, confident focal piece or a
+          tightly composed pair.
+        </p>
+      </article>
+      <article class="landing-benefit">
+        <h3>Studios & offices</h3>
+        <p>
+          Give workspaces a subtle, high-end backdrop that looks composed on video calls and in
+          person.
+        </p>
+      </article>
+      <article class="landing-benefit">
+        <h3>Collectible sets</h3>
+        <p>
+          Build curated clusters drawn from the same palette across multiple collections, so a
+          single visual language connects your space.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="landing-section">
+    <h2 class="landing-section__title">FAQ</h2>
+    <div class="landing-faq-list">
+      <details>
+        <summary>Where do I purchase the artwork?</summary>
+        <p>
+          All purchasing, payments, and shipping for premium pieces are handled through Saatchi Art
+          on the Solara Meridian Studio profile.
+        </p>
+      </details>
+      <details>
+        <summary>Do you offer print-on-demand options?</summary>
+        <p>
+          Yes. Selected designs are available as print-on-demand pieces on Redbubble for accessible
+          prints, apparel, and accessories.
+        </p>
+      </details>
+      <details>
+        <summary>Will this work with neutral interiors?</summary>
+        <p>
+          Yes. Many works are built around soft stone, sand, and mist tones so they sit quietly in
+          neutral spaces, with the option to introduce deeper jewel accents where needed.
+        </p>
+      </details>
+      <details>
+        <summary>Can I commission a specific palette?</summary>
+        <p>
+          Commissions may be available depending on the studio schedule. If open, we’ll refine a
+          palette and scale together and then translate that into a cohesive composition.
+        </p>
+      </details>
+      <details>
+        <summary>How often are new works released?</summary>
+        <p>
+          New pieces and collections are developed intentionally rather than on a fixed schedule, so
+          the studio’s visual language evolves without overwhelming the core series.
+        </p>
+      </details>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <CTASection
+    title="Collect Solara Meridian Studio originals and limited editions"
+    text="Explore the full catalogue, see current availability, and purchase securely through Saatchi Art."
+    buttonLabel="Visit Saatchi Art profile"
+    href="https://www.saatchiart.com/en-au/solara-meridian-studio"
+  />
+</LandingLayout>

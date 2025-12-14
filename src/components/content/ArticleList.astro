@@ -1,0 +1,51 @@
+---
+const { articles = [] } = Astro.props;
+---
+
+<div class="article-grid">
+  {articles.map((post) => (
+    <a href={`/articles/${post.slug}`} class="article-card">
+      {post.data.heroImage && (
+        <img src={post.data.heroImage} alt={post.data.title} loading="lazy" />
+      )}
+      <h2>{post.data.title}</h2>
+      <p>{post.data.excerpt}</p>
+    </a>
+  ))}
+</div>
+
+<style>
+  .article-grid {
+    display: grid;
+    gap: var(--space-4);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    padding: var(--space-4) 0;
+  }
+  .article-card {
+    display: block;
+    background: var(--color-bg-alt);
+    padding: var(--space-3);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.2s ease;
+    text-decoration: none;
+    color: inherit;
+  }
+  .article-card:hover {
+    transform: translateY(-4px);
+  }
+  .article-card img {
+    width: 100%;
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-2);
+    display: block;
+  }
+  .article-card h2 {
+    margin: 0 0 var(--space-2) 0;
+    font-size: var(--font-size-lg);
+  }
+  .article-card p {
+    margin: 0;
+    opacity: 0.85;
+  }
+</style>
