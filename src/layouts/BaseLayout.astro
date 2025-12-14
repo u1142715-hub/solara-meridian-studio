@@ -10,7 +10,7 @@ const pathname = Astro.url?.pathname ?? "/";
 // Normalize pathname so active link logic works on GitHub Pages project sites (base path)
 const normalizedPathname =
   base !== "/" && pathname.startsWith(base)
-    ? pathname.slice(base.length - 1) // keep leading slash
+    ? pathname.slice(base.length - 1) // keep leading slash 
     : pathname;
 
 const isActive = (href) =>
