@@ -5,6 +5,8 @@ import ArticleList from "../components/content/ArticleList.astro";
 import ArtworkCarousel from "../components/content/ArtworkCarousel.astro";
 import { getCollection } from "astro:content";
 
+const base = import.meta.env.BASE_URL || "/";
+
 const SAATCHI_PROFILE_URL = "https://www.saatchiart.com/en-au/solara-meridian-studio/";
 
 // IMPORTANT: set this to your actual Redbubble store URL (keep it quiet + secondary).
@@ -14,14 +16,20 @@ const articles = (await getCollection("articles"))
   .sort((a, b) => (b.data.publishedAt as Date).getTime() - (a.data.publishedAt as Date).getTime())
   .slice(0, 3);
 
-// Homepage featured works (same pattern as your /art page; adjust URLs if you have per-piece Saatchi links)
+// Homepage featured works
+// IMPORTANT: thumbnail must be an actual image URL. On GitHub Pages, use `${base}...` to reference /public assets.
+// Put your carousel images in:
+//   public/images/art/origin-forms/origin-forms-01.jpg
+//   public/images/art/origin-forms/origin-forms-02.jpg
+//   public/images/art/origin-forms/origin-forms-03.jpg
+// If your filenames differ, update only the filenames below.
 const featuredArtworks = [
   {
     id: "origin-forms-01",
     data: {
       title: "Origin Forms I",
       slug: "origin-forms-i",
-      thumbnail: "https://www.saatchiart.com/en-au/art/Digital-First-Emergence/2900417/13413289/view",
+      thumbnail: `${base}images/art/origin-forms/origin-forms-01.jpg`,
       saatchiUrl: SAATCHI_PROFILE_URL,
       alt: "Origin Forms I — controlled recomposition of AI artefacts into a finished work",
     },
@@ -31,7 +39,7 @@ const featuredArtworks = [
     data: {
       title: "Origin Forms II",
       slug: "origin-forms-ii",
-      thumbnail: "https://www.saatchiart.com/en-au/art/Digital-Second-Emergence/2900417/13415099/view",
+      thumbnail: `${base}images/art/origin-forms/origin-forms-02.jpg`,
       saatchiUrl: SAATCHI_PROFILE_URL,
       alt: "Origin Forms II — restrained, collectible composition built from AI artefacts",
     },
@@ -41,7 +49,7 @@ const featuredArtworks = [
     data: {
       title: "Origin Forms III",
       slug: "origin-forms-iii",
-      thumbnail: "https://www.saatchiart.com/en-au/art/Digital-Third-Emergence-Origin-Collection/2900417/13415119/view",
+      thumbnail: `${base}images/art/origin-forms/origin-forms-03.jpg`,
       saatchiUrl: SAATCHI_PROFILE_URL,
       alt: "Origin Forms III — composed figure study; intentional recomposition, not correction",
     },
@@ -67,9 +75,9 @@ const featuredArtworks = [
         </p>
 
         <div class="hero__actions">
-          <a class="btn btn--primary btn--block-mobile" href="/art">Explore the collection</a>
-          <a class="btn btn--ghost btn--block-mobile" href="/articles">Read studio notes</a>
-          <a class="btn btn--ghost btn--block-mobile" href="/about">About the studio</a>
+          <a class="btn btn--primary btn--block-mobile" href={`${base}art/`}>Explore the collection</a>
+          <a class="btn btn--ghost btn--block-mobile" href={`${base}articles/`}>Read studio notes</a>
+          <a class="btn btn--ghost btn--block-mobile" href={`${base}about/`}>About the studio</a>
         </div>
 
         <div class="hero__meta">
@@ -88,7 +96,7 @@ const featuredArtworks = [
               but the intent remains art-first.
             </p>
             <div class="mt-2">
-              <a class="btn btn--subtle btn--block" href="/art">View featured works</a>
+              <a class="btn btn--subtle btn--block" href={`${base}art/`}>View featured works</a>
             </div>
           </div>
         </div>
@@ -140,8 +148,8 @@ const featuredArtworks = [
       <ArtworkCarousel artworks={featuredArtworks} label="Featured works from The Origin Forms" />
 
       <div class="mt-3 text-center">
-        <a class="btn btn--primary btn--block-mobile" href="/art">Explore the full presentation</a>
-        <a class="btn btn--ghost btn--block-mobile" href="/provenance">Provenance & authenticity</a>
+        <a class="btn btn--primary btn--block-mobile" href={`${base}art/`}>Explore the full presentation</a>
+        <a class="btn btn--ghost btn--block-mobile" href={`${base}provenance/`}>Provenance & authenticity</a>
       </div>
     </div>
   </Section>
@@ -157,7 +165,7 @@ const featuredArtworks = [
         </p>
 
         <div class="mt-2">
-          <a class="btn btn--primary btn--block-mobile" href="/art">Go to the art page</a>
+          <a class="btn btn--primary btn--block-mobile" href={`${base}art/`}>Go to the art page</a>
           <a
             class="btn btn--ghost btn--block-mobile"
             href={SAATCHI_PROFILE_URL}
@@ -169,8 +177,11 @@ const featuredArtworks = [
         </div>
 
         <p class="cta__body" style="margin-top: 1rem; opacity: 0.85;">
-          Separately, the studio also maintains a print-on-demand shop on <a href=https://www.redbubble.com/people/SamFrederiksen/shop target="_blank" rel="noopener noreferrer">Redbubble</a>
-        featuring distinct designs created specifically for that format.
+          Separately, the studio also maintains a print-on-demand shop on{" "}
+          <a href="https://www.redbubble.com/people/SamFrederiksen/shop" target="_blank" rel="noopener noreferrer">
+            Redbubble
+          </a>
+          {" "}featuring distinct designs created specifically for that format.
         </p>
       </div>
     </div>
@@ -188,7 +199,7 @@ const featuredArtworks = [
         <ArticleList articles={articles} />
 
         <div class="mt-3 text-center">
-          <a class="btn btn--ghost btn--block-mobile" href="/articles">View all articles</a>
+          <a class="btn btn--ghost btn--block-mobile" href={`${base}articles/`}>View all articles</a>
         </div>
       </div>
     </Section>
