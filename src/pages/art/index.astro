@@ -1,8 +1,5 @@
----
----
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Section from "../../components/ui/Section.astro";
-const SAATCHI_PROFILE_URL = "https://www.saatchiart.com/en-au/solara-meridian-studio";
 import LandingLayout from "../../layouts/LandingLayout.astro";
 import ArtworkCarousel from "../../components/content/ArtworkCarousel.astro";
 import CTASection from "../../components/ui/CTASection.astro";
@@ -11,14 +8,14 @@ import { getCollection } from "astro:content";
 
 const artworks = await getCollection("artworks");
 const featured = artworks.filter((a) => a.data.isFeatured);
-
+const SAATCHI_PROFILE_URL = "https://www.saatchiart.com/en-au/solara-meridian-studio";
 const featuredArtworks = [
   {
     id: "origin-forms-01",
     data: {
       title: "Origin Forms I",
       slug: "origin-forms-i",
-      thumbnail: "/images/art/origin-forms/origin-forms-01.jpg",
+      thumbnail: "/public/images/art/origin-forms/origin-forms-01.jpg",
       saatchiUrl: "https://www.saatchiart.com/en-au/art/Digital-First-Emergence/2900417/13413289/view",
       alt: "Origin Forms I – controlled recomposition of AI artefacts into a finished, collectible work",
     },
@@ -28,7 +25,7 @@ const featuredArtworks = [
     data: {
       title: "Origin Forms II",
       slug: "origin-forms-ii",
-      thumbnail: "/images/art/origin-forms/origin-forms-02.jpg",
+      thumbnail: "/public/images/art/origin-forms/origin-forms-02.jpg",
       saatchiUrl: "https://www.saatchiart.com/en-au/art/Digital-Second-Emergence/2900417/13415099/view",
       alt: "Origin Forms II – restrained, composed artwork built from intentionally selected AI artefacts",
     },
@@ -38,7 +35,7 @@ const featuredArtworks = [
     data: {
       title: "Origin Forms III",
       slug: "origin-forms-iii",
-      thumbnail: "/images/art/origin-forms/origin-forms-03.jpg",
+      thumbnail: "/public/images/art/origin-forms/origin-forms-03.jpg",
       saatchiUrl: "https://www.saatchiart.com/en-au/art/Digital-Third-Emergence-Origin-Collection/2900417/13415119/view",
       alt: "Origin Forms III – composed figure study: intentional recomposition, not correction",
     },
