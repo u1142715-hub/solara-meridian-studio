@@ -22,10 +22,11 @@ const base = import.meta.env.BASE_URL || "/";
           and environments that feel intentional rather than generic.
         </p>
 
-        <div class="hero__actions">
-          <a class="btn btn--primary btn--block-mobile" href="/art">View the work</a>
-          <a class="btn btn--ghost btn--block-mobile" href="/provenance">Provenance & Authenticity</a>
-        </div>
+      <div class="hero__actions">
+  <a class="btn btn--primary btn--block-mobile" href={`${base}art/`}>View the work</a>
+  <a class="btn btn--ghost btn--block-mobile" href={`${base}provenance/`}>Provenance & Authenticity</a>
+</div>
+
 
         <div class="hero__meta">
           Purchases and fulfilment are handled securely through Saatchi Art.
