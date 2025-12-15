@@ -1,15 +1,25 @@
 ---
-const { articles = [] } = Astro.props;
+const { articles } = Astro.props;
+
+// GitHub Pages–safe base path
+const base = import.meta.env.BASE_URL || "/";
 ---
 
 <div class="article-grid">
   {articles.map((post) => (
-    <a href={`/articles/${post.slug}`} class="article-card">
+    <a
+      href={`${base}articles/${post.slug}/`}
+      class="article-card"
+    >
       {post.data.heroImage && (
-        <img src={post.data.heroImage} alt={post.data.title} loading="lazy" />
+        <img
+          src={`${base}${post.data.heroImage.replace(/^\//, "")}`}
+          alt={post.data.title}
+          loading="lazy"
+        />
       )}
       <h2>{post.data.title}</h2>
-      <p>{post.data.excerpt}</p>
+      {post.data.excerpt && <p>{post.data.excerpt}</p>}
     </a>
   ))}
 </div>
@@ -28,8 +38,6 @@ const { articles = [] } = Astro.props;
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-soft);
     transition: transform 0.2s ease;
-    text-decoration: none;
-    color: inherit;
   }
   .article-card:hover {
     transform: translateY(-4px);
@@ -38,14 +46,5 @@ const { articles = [] } = Astro.props;
     width: 100%;
     border-radius: var(--radius-lg);
     margin-bottom: var(--space-2);
-    display: block;
-  }
-  .article-card h2 {
-    margin: 0 0 var(--space-2) 0;
-    font-size: var(--font-size-lg);
-  }
-  .article-card p {
-    margin: 0;
-    opacity: 0.85;
   }
 </style>
