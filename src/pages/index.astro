@@ -17,12 +17,8 @@ const articles = (await getCollection("articles"))
   .slice(0, 3);
 
 // Homepage featured works
-// IMPORTANT: thumbnail must be an actual image URL. On GitHub Pages, use `${base}...` to reference /public assets.
-// Put your carousel images in:
-//   public/images/art/origin-forms/origin-forms-01.jpg
-//   public/images/art/origin-forms/origin-forms-02.jpg
-//   public/images/art/origin-forms/origin-forms-03.jpg
-// If your filenames differ, update only the filenames below.
+// Your files exist at: public/images/art/origin-forms/origin-forms-01.jpg etc.
+// On GitHub Pages project sites, use BASE_URL so it becomes /solara-meridian-studio/images/...
 const featuredArtworks = [
   {
     id: "origin-forms-01",
