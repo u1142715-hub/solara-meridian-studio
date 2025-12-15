@@ -4,6 +4,7 @@ import Section from "../../components/ui/Section.astro";
 
 const SAATCHI_PROFILE_URL = "https://www.saatchiart.com/en-au/solara-meridian-studio";
 const base = import.meta.env.BASE_URL || "/";
+
 ---
 
 <BaseLayout
@@ -22,10 +23,8 @@ const base = import.meta.env.BASE_URL || "/";
         </p>
 
         <div class="hero__actions">
-          <a class="btn btn--primary btn--block-mobile" href={`${base}art/`}>View the work</a>
-          <a class="btn btn--ghost btn--block-mobile" href={`${base}provenance/`}>
-            Provenance & Authenticity
-          </a>
+          <a class="btn btn--primary btn--block-mobile" href="/art">View the work</a>
+          <a class="btn btn--ghost btn--block-mobile" href="/provenance">Provenance & Authenticity</a>
         </div>
 
         <div class="hero__meta">
@@ -66,6 +65,7 @@ const base = import.meta.env.BASE_URL || "/";
       </div>
 
       <div class="card">
+        <!-- Framing sentence: critical for hybrid model -->
         <p class="card__body" style="opacity: 0.9;">
           The context below is not a justification of the work, but the conditions that made it inevitable.
         </p>
@@ -82,37 +82,52 @@ const base = import.meta.env.BASE_URL || "/";
 
         <p class="card__body">
           That shift led me to technology. From an early age, computers fascinated me as systems—logic, structure,
-          cause and effect.
+          cause and effect. Over time, that interest expanded beyond tools into how information, meaning,
+          and trust form in different contexts.
         </p>
 
         <p class="card__body">
           I began to notice how communication subtly changes depending on situation and audience, why trust forms
-          in some circumstances and not others.
+          in some circumstances and not others, and how people interpret intention under uncertainty. This wasn’t
+          about manipulation—it was about understanding how humans actually behave. That understanding later became
+          essential to how I think about art as communication, not just expression.
         </p>
 
         <p class="card__body">
           Before returning to study, life took a practical direction. After school, I entered the building industry
-          and spent roughly twenty years working as a carpenter.
+          and spent roughly twenty years working as a carpenter—an apprenticeship in quality, material awareness,
+          precision, and restraint.
         </p>
 
         <p class="card__body">
-          In 2019, my mother passed away.
+          In 2019, my mother passed away. She had been creative herself—working with sculpture and later painting—
+          but like many people, art often took a back seat to responsibility. Her death marked a difficult chapter,
+          not only emotionally, but existentially.
         </p>
 
         <p class="card__body">
-          One of the hardest aspects was the loss of connection.
+          One of the hardest aspects was the loss of connection. I could no longer call her or share thoughts with her.
+          In that absence, I searched quietly for a way to feel connected again. Art became that bridge—not because
+          I believed I was good at it, but because it felt like returning to a language she once spoke.
         </p>
 
         <p class="card__body">
-          Early attempts were poor. But I continued deliberately.
+          Early attempts were poor. But I continued deliberately, choosing subjects and techniques beyond my ability,
+          not to master them quickly, but to grow through discomfort. Over time, something unexpected happened:
+          people responded—not with flattery, but with genuine recognition. That restored self-belief and reinforced
+          the idea that ability is built through sustained effort and honest feedback.
         </p>
 
         <p class="card__body">
-          Digital work eventually felt inevitable.
+          Digital work eventually felt inevitable. It brought together everything that had shaped me:
+          the discipline of craft, the structure of systems thinking, an understanding of perception and meaning,
+          and an emotional preference for restraint in a time where much AI-generated work can feel over-produced
+          or emotionally hollow.
         </p>
 
         <p class="card__body">
-          Working digitally allowed calm to become a design choice rather than an accident.
+          Working digitally allowed calm to become a design choice rather than an accident—complexity without noise,
+          precision without coldness, and abstraction without emptiness.
         </p>
       </div>
     </div>
@@ -130,21 +145,24 @@ const base = import.meta.env.BASE_URL || "/";
         <div class="card">
           <div class="card__title">Not built for attention</div>
           <p class="card__body">
-            This work is not about virality, shock, or mass appeal.
+            This work is not about virality, shock, or mass appeal. It is built to feel grounded,
+            considered, and durable.
           </p>
         </div>
 
         <div class="card">
           <div class="card__title">Restraint over saturation</div>
           <p class="card__body">
-            Texture, imperfection, quiet authority, and intentional limits.
+            Texture, imperfection, quiet authority, and intentional limits are used as a response
+            to visual overload.
           </p>
         </div>
 
         <div class="card">
           <div class="card__title">Built for real rooms</div>
           <p class="card__body">
-            Contrast, scale, and negative space are treated as interior design inputs.
+            Contrast, scale, and negative space are treated as interior design inputs,
+            not afterthoughts.
           </p>
         </div>
       </div>
