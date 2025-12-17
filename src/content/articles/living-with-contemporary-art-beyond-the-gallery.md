@@ -69,7 +69,7 @@ For those who appreciate the work but are not seeking original gallery pieces, t
 A curated selection of print-based works exists separately from the main gallery offerings, intended for living spaces rather than collections.
 
 You can explore that collection here:  
-[View print-based works](PRINTS_REFERENCE)
+[View print-based works](../../prints/)
 
 This option is not a substitute for gallery work — it is simply another way to engage.
 
