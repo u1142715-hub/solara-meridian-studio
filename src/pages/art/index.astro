@@ -15,10 +15,9 @@ const featuredArtworks = [
     data: {
       title: "Origin Forms I",
       slug: "origin-forms-i",
-      // served from public/images/...
       thumbnail: `${base}images/art/origin-forms/origin-forms-01.jpg`,
       saatchiUrl: "https://www.saatchiart.com/en-au/art/Digital-First-Emergence/2900417/13413289/view",
-      alt: "Origin Forms I – controlled recomposition of AI artefacts into a finished, collectible work",
+      alt: "Abstract contemporary figurative artwork with simplified black form on warm stone-toned background, exploring emergence, balance, and visual curiosity.",
     },
   },
   {
@@ -28,7 +27,7 @@ const featuredArtworks = [
       slug: "origin-forms-ii",
       thumbnail: `${base}images/art/origin-forms/origin-forms-02.jpg`,
       saatchiUrl: "https://www.saatchiart.com/en-au/art/Digital-Second-Emergence/2900417/13415099/view",
-      alt: "Origin Forms II – restrained, composed artwork built from intentionally selected AI artefacts",
+      alt: "Abstract contemporary figurative artwork with simplified black form on warm stone-toned background, exploring emergence, balance, and visual curiosity.",
     },
   },
   {
@@ -38,7 +37,37 @@ const featuredArtworks = [
       slug: "origin-forms-iii",
       thumbnail: `${base}images/art/origin-forms/origin-forms-03.jpg`,
       saatchiUrl: "https://www.saatchiart.com/en-au/art/Digital-Third-Emergence-Origin-Collection/2900417/13415119/view",
-      alt: "Origin Forms III – composed figure study: intentional recomposition, not correction",
+      alt: "Abstract contemporary figurative artwork with simplified black form on warm stone-toned background, exploring emergence, balance, and visual curiosity.",
+    },
+  },
+  {
+    id: "quiet-resilience-01",
+    data: {
+      title: "Quiet Resilience I",
+      slug: "quiet-resilience-i",
+      thumbnail: `${base}images/art/origin-forms/origin-forms-04.jpg`,
+      saatchiUrl: "https://www.saatchiart.com/en-au/art/Digital-Quiet-Resilience-1/2900417/13415168/view",
+      alt: "Abstract contemporary figurative artwork in dark marble tones with gold veining, composed for calm presence and sustained attention.",
+    },
+  },
+  {
+    id: "quiet-resilience-02",
+    data: {
+      title: "Quiet Resilience II",
+      slug: "quiet-resilience-ii",
+      thumbnail: `${base}images/art/origin-forms/origin-forms-05.jpg`,
+      saatchiUrl: "https://www.saatchiart.com/en-au/art/Digital-Quiet-Resilience-II/2900417/13415174/view",
+      alt: "Abstract contemporary figurative artwork in dark marble tones with gold veining, composed for calm presence and sustained attention.",
+    },
+  },
+  {
+    id: "quiet-resilience-03",
+    data: {
+      title: "Quiet Resilience III",
+      slug: "quiet-resilience-iii",
+      thumbnail: `${base}images/art/origin-forms/origin-forms-06.jpg`,
+      saatchiUrl: "https://www.saatchiart.com/en-au/art/Digital-Quiet-Resilience-III/2900417/13415182/view",
+      alt: "Abstract contemporary figurative artwork in dark marble tones with gold veining, composed for calm presence and sustained attention.",
     },
   },
 ];
@@ -136,7 +165,7 @@ const featuredArtworks = [
           A curated selection from the first limited-edition series released by Solara Meridian Studio.
         </p>
 
-        <ArtworkCarousel artworks={featuredArtworks} label="Featured works from The Origin Forms" />
+        <ArtworkCarousel artworks={featuredArtworks} label="Featured works from current collections" />
       </div>
     </section>
 
@@ -199,11 +228,11 @@ const featuredArtworks = [
           <p>
             Yes. Separately, the studio also maintains a print-on-demand shop on{" "}
             <a
-              href="https://www.redbubble.com/people/SamFrederiksen/shop"
+              href={`${base}prints/`}
               target="_blank"
               rel="noopener noreferrer"
             >
-              Redbubble
+              Prints
             </a>{" "}
             featuring distinct designs created specifically for that format.
           </p>
