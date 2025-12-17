@@ -78,7 +78,3 @@ Trends come and go quickly. Materials, colour palettes, and visual styles shift.
 - a sense of purpose rather than novelty  
 
 These qualities allow a piece to evolve with its environment rather than age against it.
-
----
-
-[View the work →](../../art/)
