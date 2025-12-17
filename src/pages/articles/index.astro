@@ -41,6 +41,9 @@ const articleHref = (slug) => `${base}/articles/${slug}/`;
           {featured.data.description ? (
             <p class="reading-hero__desc">{featured.data.description}</p>
           ) : null}
+          <div class="reading-hero__meta" aria-hidden="true">
+            <span class="micro-cta micro-cta--hero">Read</span>
+          </div>
         </section>
       ) : null}
 
@@ -49,21 +52,21 @@ const articleHref = (slug) => `${base}/articles/${slug}/`;
         {groups.map((group, groupIndex) => {
           const articlesSeen = (groupIndex + 1) * 3; // counts in the grouped list
           const isChapterBreak = articlesSeen % 9 === 0; // every 3 groups of 3 (9)
-          const isMinorBreak = !isChapterBreak; // after each 3 (including partial last group if present)
 
           return (
             <div class="articles-cluster">
               <div class="articles-cluster__grid">
                 {group.map((a) => (
                   <article class="article-card">
-                    <h3 class="article-card__title">
-                      <a class="article-card__link" href={articleHref(a.slug)}>
-                        {a.data.title}
-                      </a>
-                    </h3>
-                    {a.data.description ? (
-                      <p class="article-card__desc">{a.data.description}</p>
-                    ) : null}
+                    <a class="article-card__hit" href={articleHref(a.slug)} aria-label={`Read: ${a.data.title}`}>
+                      <h3 class="article-card__title">{a.data.title}</h3>
+                      {a.data.description ? (
+                        <p class="article-card__desc">{a.data.description}</p>
+                      ) : null}
+                      <div class="article-card__meta" aria-hidden="true">
+                        <span class="micro-cta">Read</span>
+                      </div>
+                    </a>
                   </article>
                 ))}
               </div>
@@ -75,7 +78,6 @@ const articleHref = (slug) => `${base}/articles/${slug}/`;
                 class:list={[
                   "articles-break",
                   isChapterBreak ? "articles-break--chapter" : "articles-break--minor",
-                  // If this is the last cluster and it has fewer than 3, still show a minor break (ok).
                 ]}
                 aria-hidden="true"
               />
@@ -123,6 +125,15 @@ const articleHref = (slug) => `${base}/articles/${slug}/`;
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 14px;
     background: rgba(255, 255, 255, 0.02);
+    position: relative;
+  }
+  .reading-hero::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: 14px;
+    pointer-events: none;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.04), 0 0 28px rgba(214, 179, 106, 0.09);
   }
   .reading-hero__kicker {
     font-size: var(--font-size-sm);
@@ -150,6 +161,9 @@ const articleHref = (slug) => `${base}/articles/${slug}/`;
     opacity: 0.88;
     line-height: 1.7;
   }
+  .reading-hero__meta {
+    margin-top: var(--space-3);
+  }
 
   /* Article list (clusters of 3) */
   .articles-list {
@@ -167,10 +181,22 @@ const articleHref = (slug) => `${base}/articles/${slug}/`;
   }
 
   .article-card {
-    padding: var(--space-4);
-    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
     background: rgba(255, 255, 255, 0.02);
+  }
+
+  /* Make entire card clickable (single link) */
+  .article-card__hit {
+    display: block;
+    padding: var(--space-4);
+    text-decoration: none;
+    color: inherit;
+  }
+  .article-card__hit:hover,
+  .article-card__hit:focus-visible {
+    background: rgba(255, 255, 255, 0.03);
   }
 
   .article-card__title {
@@ -179,20 +205,35 @@ const articleHref = (slug) => `${base}/articles/${slug}/`;
     line-height: 1.25;
   }
 
-  .article-card__link {
-    text-decoration: none;
-  }
-  .article-card__link:hover,
-  .article-card__link:focus-visible {
-    text-decoration: underline;
-    text-decoration-color: var(--sms-accent);
-    text-underline-offset: 0.18em;
-  }
-
   .article-card__desc {
     margin: 0;
     opacity: 0.85;
     line-height: 1.7;
+  }
+
+  .article-card__meta {
+    margin-top: var(--space-3);
+  }
+
+  /* Micro-CTA pill (visual affordance only) */
+  .micro-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.35rem 0.6rem;
+    font-size: var(--font-size-sm);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 999px;
+    border: 1px solid rgba(214, 179, 106, 0.35);
+    color: rgba(214, 179, 106, 0.95);
+    background: rgba(214, 179, 106, 0.06);
+    box-shadow: 0 0 18px rgba(214, 179, 106, 0.10);
+  }
+  .micro-cta--hero {
+    border-color: rgba(214, 179, 106, 0.45);
+    background: rgba(214, 179, 106, 0.07);
+    box-shadow: 0 0 22px rgba(214, 179, 106, 0.14);
   }
 
   /* Breakers */
