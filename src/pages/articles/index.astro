@@ -32,18 +32,16 @@ const articleHref = (slug) => `${base}/articles/${slug}/`;
       {/* Reading Hero (Featured) */}
       {featured ? (
         <section class="reading-hero" aria-label="Featured article">
-          <div class="reading-hero__kicker">Featured reading</div>
-          <h2 class="reading-hero__title">
-            <a class="reading-hero__link" href={articleHref(featured.slug)}>
-              {featured.data.title}
-            </a>
-          </h2>
-          {featured.data.description ? (
-            <p class="reading-hero__desc">{featured.data.description}</p>
-          ) : null}
-          <div class="reading-hero__meta" aria-hidden="true">
-            <span class="micro-cta micro-cta--hero">Read</span>
-          </div>
+          <a class="reading-hero__hit" href={articleHref(featured.slug)} aria-label={`Read: ${featured.data.title}`}>
+            <div class="reading-hero__kicker">Featured reading</div>
+            <h2 class="reading-hero__title">{featured.data.title}</h2>
+            {featured.data.description ? (
+              <p class="reading-hero__desc">{featured.data.description}</p>
+            ) : null}
+            <div class="reading-hero__meta" aria-hidden="true">
+              <span class="micro-cta micro-cta--hero">Read</span>
+            </div>
+          </a>
         </section>
       ) : null}
 
@@ -71,9 +69,6 @@ const articleHref = (slug) => `${base}/articles/${slug}/`;
                 ))}
               </div>
 
-              {/* Breakers:
-                  - thin accent line after every cluster of 3
-                  - slightly thicker + more spacing every 9 (chapter) */}
               <div
                 class:list={[
                   "articles-break",
@@ -112,7 +107,6 @@ const articleHref = (slug) => `${base}/articles/${slug}/`;
     padding: var(--space-2) 0 var(--space-6);
   }
 
-  /* Accent (uses site token if present; safe fallback keeps consistency) */
   :global(:root) {
     --sms-accent: var(--color-accent, var(--accent, rgba(214, 179, 106, 1)));
   }
@@ -121,11 +115,11 @@ const articleHref = (slug) => `${base}/articles/${slug}/`;
   .reading-hero {
     max-width: 72ch;
     margin: 0 auto var(--space-5);
-    padding: var(--space-5);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 14px;
     background: rgba(255, 255, 255, 0.02);
     position: relative;
+    overflow: hidden;
   }
   .reading-hero::before {
     content: "";
@@ -134,6 +128,16 @@ const articleHref = (slug) => `${base}/articles/${slug}/`;
     border-radius: 14px;
     pointer-events: none;
     box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.04), 0 0 28px rgba(214, 179, 106, 0.09);
+  }
+  .reading-hero__hit {
+    display: block;
+    padding: var(--space-5);
+    text-decoration: none;
+    color: inherit;
+  }
+  .reading-hero__hit:hover,
+  .reading-hero__hit:focus-visible {
+    background: rgba(255, 255, 255, 0.03);
   }
   .reading-hero__kicker {
     font-size: var(--font-size-sm);
@@ -147,15 +151,6 @@ const articleHref = (slug) => `${base}/articles/${slug}/`;
     font-size: var(--font-size-2xl);
     line-height: 1.15;
   }
-  .reading-hero__link {
-    text-decoration: none;
-  }
-  .reading-hero__link:hover,
-  .reading-hero__link:focus-visible {
-    text-decoration: underline;
-    text-decoration-color: var(--sms-accent);
-    text-underline-offset: 0.18em;
-  }
   .reading-hero__desc {
     margin: 0;
     opacity: 0.88;
@@ -165,7 +160,7 @@ const articleHref = (slug) => `${base}/articles/${slug}/`;
     margin-top: var(--space-3);
   }
 
-  /* Article list (clusters of 3) */
+  /* Article list */
   .articles-list {
     max-width: 72ch;
     margin: 0 auto;
@@ -187,7 +182,6 @@ const articleHref = (slug) => `${base}/articles/${slug}/`;
     background: rgba(255, 255, 255, 0.02);
   }
 
-  /* Make entire card clickable (single link) */
   .article-card__hit {
     display: block;
     padding: var(--space-4);
@@ -215,11 +209,10 @@ const articleHref = (slug) => `${base}/articles/${slug}/`;
     margin-top: var(--space-3);
   }
 
-  /* Micro-CTA pill (visual affordance only) */
+  /* Micro-CTA pill */
   .micro-cta {
     display: inline-flex;
     align-items: center;
-    gap: 0.35rem;
     padding: 0.35rem 0.6rem;
     font-size: var(--font-size-sm);
     letter-spacing: 0.08em;
@@ -253,7 +246,7 @@ const articleHref = (slug) => `${base}/articles/${slug}/`;
     opacity: 0.55;
   }
 
-  /* Empty-state (only appears when no articles exist) */
+  /* Empty-state */
   .articles-empty {
     max-width: 72ch;
     margin: var(--space-6) auto 0;
