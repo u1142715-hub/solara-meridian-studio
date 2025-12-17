@@ -79,7 +79,3 @@ It is not designed for everyone — and that is precisely the point.
 If you find yourself drawn to certain works without needing justification, you are already responding the way collectors do. Taste develops before certainty. Decisions often come before external validation.
 
 Understanding how value forms in contemporary art does not require expertise — only attention.
-
----
-
-[View the work →](../../art/)
