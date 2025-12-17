@@ -21,6 +21,29 @@ const resolvedHref = href ?? `${base}/art/`;
   <h2 class="article-cta__title">{title}</h2>
   <p class="article-cta__text">{text}</p>
   <p class="article-cta__actions">
-    <a class="article-cta__link" href={resolvedHref}>{buttonLabel}</a>
+    <a class="article-cta__link" href={resolvedHref}>
+      {buttonLabel}
+    </a>
   </p>
 </aside>
+
+<style>
+  /* Accent color — inherit site token safely */
+  :global(:root) {
+    --article-cta-accent: var(--color-accent, var(--accent, rgba(214, 179, 106, 1)));
+  }
+
+  .article-cta__link {
+    color: var(--article-cta-accent);
+    text-decoration: underline;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 0.22em;
+    text-decoration-color: rgba(214, 179, 106, 0.7);
+    font-weight: 500;
+  }
+
+  .article-cta__link:hover,
+  .article-cta__link:focus-visible {
+    text-decoration-color: var(--article-cta-accent);
+  }
+</style>
