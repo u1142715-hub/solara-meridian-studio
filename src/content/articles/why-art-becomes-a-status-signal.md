@@ -1,7 +1,7 @@
 ---
 title: "Why Art Becomes a Status Signal Long Before It Becomes an Investment"
 description: "For many people with new or inherited wealth, art is not about expertise or taste—it is about identity, presence, and signaling belonging in spaces of power."
-publishedAt: "2025-12-17"
+publishedAt: 2025-12-17
 topicCluster: "identity-and-status"
 targetLandingPage: "art"
 ---
